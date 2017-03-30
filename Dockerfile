@@ -24,7 +24,7 @@ RUN apt-get update \
     && cd namecoin-core-nc0.13.0rc1 \
     && ./autogen.sh \
     && ./configure --with-incompatible-bdb \
-    && make -j5 \
+    && make \
     && make install \
     && mkdir /data
 

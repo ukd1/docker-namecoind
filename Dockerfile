@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER b@zi.is
+MAINTAINER me@rsmith.co
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y install \
@@ -20,8 +20,8 @@ RUN apt-get update \
         libboost-thread-dev \
         libdb-dev \
         libdb++-dev \
-    && curl -L https://github.com/namecoin/namecoin-core/archive/nc0.13.0rc1.tar.gz | tar xz \
-    && cd namecoin-core-nc0.13.0rc1 \
+    && curl -L https://github.com/namecoin/namecoin-core/archive/nc0.13.99-name-tab-beta1.tar.gz | tar xz \
+    && cd nc0.13.99-name-tab-beta1 \
     && ./autogen.sh \
     && ./configure --with-incompatible-bdb \
     && make \

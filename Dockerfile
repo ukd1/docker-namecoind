@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER me@rsmith.co
+LABEL maintainer="me@rsmith.co"
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y install \
@@ -34,5 +34,6 @@ RUN cd namecoin-core-nc0.13.99-name-tab-beta1 \
     && mkdir /data
 
 VOLUME ["/data"]
+ENV NAMECOIND_RPCAUTH changeme
 EXPOSE 8336/tcp 8334/tcp
-ENTRYPOINT ["/usr/local/bin/namecoind", "-datadir=/data", "-debug", "-rpcbind=0.0.0.0:8336", "-rpcallowip=0.0.0.0/0"]
+ENTRYPOINT ["/usr/local/bin/namecoind", "-datadir=/data", "-debug", "-rpcbind=0.0.0.0:8336", "-rpcallowip=0.0.0.0/0", "-rpcauth=${NAMECOIND_RPCAUTH}"]

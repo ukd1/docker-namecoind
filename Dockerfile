@@ -35,5 +35,6 @@ RUN cd namecoin-core-nc0.13.99-name-tab-beta1 \
 
 VOLUME ["/data"]
 ENV NAMECOIND_RPCAUTH changeme
+ENV NAMECOIND_DBCACHE 300
 EXPOSE 8336/tcp 8334/tcp 8332/tcp
-ENTRYPOINT ["/usr/local/bin/namecoind", "-debug=1", "-printtoconsole", "-rest", "-datadir=/data", "-rpcbind=0.0.0.0:8336", "-rpcallowip=0.0.0.0/0", "-rpcauth=${NAMECOIND_RPCAUTH}"]
+ENTRYPOINT ["/usr/local/bin/namecoind", "-debug=1", "-dbcache=${NAMECOIND_DBCACHE}", "-printtoconsole", "-rest", "-datadir=/data", "-rpcbind=0.0.0.0:8336", "-rpcallowip=0.0.0.0/0", "-rpcauth=${NAMECOIND_RPCAUTH}"]
